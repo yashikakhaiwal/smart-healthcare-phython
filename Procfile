@@ -1,0 +1,1 @@
+web: gunicorn healthstack.wsgi --bind 0.0.0.0:$PORTs

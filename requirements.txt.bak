@@ -1,0 +1,11 @@
+Django>=4.2,<5
+gunicorn
+whitenoise
+psycopg[binary]
+django-environ
+djangorestframework
+djangorestframework-simplejwt
+Pillow>=10.4.0
+channels
+channels_redis
+daphne
