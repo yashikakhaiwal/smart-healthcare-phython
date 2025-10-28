@@ -100,9 +100,16 @@ WSGI_APPLICATION = 'healthstack.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "HOST": os.getenv("MYSQLHOST", "localhost"),
+        "PORT": os.getenv("MYSQLPORT", "3306"),
+        "USER": os.getenv("MYSQLUSER", "root"),
+        "PASSWORD": os.getenv("MYSQLPASSWORD", ""),
+        "NAME": os.getenv("MYSQLDATABASE", "healthstack"),
+        "OPTIONS": {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
@@ -183,4 +190,5 @@ AUTH_USER_MODEL = 'hospital.User'
 
 # SESSION AGE 45 Minutes
 SESSION_COOKIE_AGE = 45*60
+
 SESSION_SAVE_EVERY_REQUEST = True
